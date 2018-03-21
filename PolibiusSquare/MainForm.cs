@@ -29,21 +29,63 @@ namespace PolibiusSquare
 
         private String Pdecrypt(String incommingMessage)
         {
+            if (!(incommingMessage.Length % 2 == 0))
+                return "Input must be correct! Invalid numbers count!";
+            String parsedString = ParseStringBy2(incommingMessage);
 
 
 
-
-            return "";
+            return parsedString;
         }
 
-        private void ParseStringBy2()
+        private String ParseStringBy2(String StringToParse)
         {
+            String bufferPair = "";
+            String outputString = "";
+            bool characterSkipped = false;
+            for(int i = 1; i <= StringToParse.Length; i++)
+            {
+                bufferPair += StringToParse[i - 1];
+                if(i%2 == 0)//means i = 2, i = 4, etc - we've read 2 symbols
+                {
+                    outputString += DeconcatString(bufferPair) + " ";
+                    characterSkipped = true;
+                }
+                if (characterSkipped)
+                {
+                    bufferPair = "";//this is REAL buffer
+                    characterSkipped = false;
+                }
+            }
 
+
+            return outputString;
+        }
+        
+        /// <summary>
+        /// Принимает двухсимвольную строку.
+        /// </summary>
+        /// <param name="inputString">Двухсимвольная строка из простых чисел.</param>
+        /// <returns>Возвращает асоциированный к этим двем числам символ из Aplhabet</returns>
+        private String DeconcatString(String inputString)
+        {//eg 32 is O, 23 is P
+            if (inputString.Length != 2)
+                return "_error_";
+
+            Char outputChar;
+
+            int first = Int32.Parse(inputString[1].ToString());
+            int second = Int32.Parse(inputString[0].ToString());
+
+            outputChar = Alphabet[first - 1, second - 1];
+
+            Debug.WriteLine(" " + outputChar);
+            return outputChar.ToString();
         }
         private String Pencypt(String incomingMessage)//polibius encrypt
         {
             String bufferString = "";
-            Debug.WriteLine("Entered pencrypt");
+            Debug.WriteLine("Encrypt!");
             foreach(char ch in incomingMessage)
             {
                 bufferString += SearchIndexes(ch).ToString() + " ";
@@ -62,17 +104,14 @@ namespace PolibiusSquare
             {
                 for(int j = 1; j <= 5; j++)
                 {
-                    if(inputChar == Alphabet[i - 1 , j - 1])
+                    if (inputChar == Alphabet[i - 1 , j - 1])
                     {
                         indexI = i;//Trust me
                         indexJ = j;//trust me2
                         totalResult = ConcatNumbers(indexJ , indexI);//trust me again, column and then is row
                         timeToStop = true;
-                        
-                    } else//didn't found any matchcasing - another symbols is WRONG
-                    {
-
                     }
+
                     if (timeToStop)
                         break;
 
@@ -94,28 +133,26 @@ namespace PolibiusSquare
             resultString = firstNumber;
             resultString += secondNumber;
             resultNumber = Int32.Parse(resultString);
-            /*if (resultNumber < 0)
-            {
-                Debug.WriteLine("char get fucked in ConcatNumbers!");
-                return 0;
-            }*/
 
             return resultNumber;
         }
+
+
 
         private void MainForm_Load(object sender , EventArgs e)
         {
             //TODO
         }
 
-        private void encrytpButton_Click(object sender , EventArgs e)
-        {
-            Debug.WriteLine("entered encryptButton_Click");
+        private void encrytpButton_Click(object sender , EventArgs e) { 
+      
             inputString = inputTextBox.Text;
+            String bufferString = inputTextBox.Text;
+            bufferString = bufferString.Replace(" " , string.Empty);//Clearing spaces in both variants
+            Debug.WriteLine("bufferString : " + bufferString);
+
             if (encryptCheckBox.Checked)//encrypting
             {
-                String bufferString = inputTextBox.Text;
-                bufferString = bufferString.Replace(" " , string.Empty);//Clearing spaces
                 bufferString = bufferString.ToUpper();
                 Debug.WriteLine("uppercased string without spaces :" + bufferString);
 
@@ -128,6 +165,10 @@ namespace PolibiusSquare
             }
             else//decrypting
             {
+                Debug.WriteLine("Decrypting;");
+                outputString = Pdecrypt(bufferString);
+                outputTextBox.Text = outputString;
+                outputString = "";
 
             }
         }

@@ -438,7 +438,7 @@
             this.inputTextBox.Name = "inputTextBox";
             this.inputTextBox.Size = new System.Drawing.Size(314, 92);
             this.inputTextBox.TabIndex = 4;
-            this.inputTextBox.Text = "maks";
+            this.inputTextBox.Text = "23 11 52 34";
             // 
             // encryptCheckBox
             // 
