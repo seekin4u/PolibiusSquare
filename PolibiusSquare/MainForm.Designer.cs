@@ -77,9 +77,9 @@
             this.DescriprionLabel1.AutoSize = true;
             this.DescriprionLabel1.Location = new System.Drawing.Point(9, 9);
             this.DescriprionLabel1.Name = "DescriprionLabel1";
-            this.DescriprionLabel1.Size = new System.Drawing.Size(66, 13);
+            this.DescriprionLabel1.Size = new System.Drawing.Size(286, 13);
             this.DescriprionLabel1.TabIndex = 0;
-            this.DescriprionLabel1.Text = "Description1";
+            this.DescriprionLabel1.Text = "Simple encrypting. Check ENCTUPT MESSAGE checkbox";
             // 
             // InputLabel
             // 
