@@ -69,6 +69,7 @@
             this.encrytpButton = new System.Windows.Forms.Button();
             this.outputTextBox = new System.Windows.Forms.RichTextBox();
             this.inputTextBox = new System.Windows.Forms.RichTextBox();
+            this.encryptCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // DescriprionLabel1
@@ -83,7 +84,7 @@
             // InputLabel
             // 
             this.InputLabel.AutoSize = true;
-            this.InputLabel.Location = new System.Drawing.Point(9, 45);
+            this.InputLabel.Location = new System.Drawing.Point(9, 26);
             this.InputLabel.Name = "InputLabel";
             this.InputLabel.Size = new System.Drawing.Size(124, 13);
             this.InputLabel.TabIndex = 0;
@@ -433,17 +434,28 @@
             // 
             // inputTextBox
             // 
-            this.inputTextBox.Location = new System.Drawing.Point(12, 61);
+            this.inputTextBox.Location = new System.Drawing.Point(12, 42);
             this.inputTextBox.Name = "inputTextBox";
             this.inputTextBox.Size = new System.Drawing.Size(314, 92);
             this.inputTextBox.TabIndex = 4;
-            this.inputTextBox.Text = "";
+            this.inputTextBox.Text = "maks";
+            // 
+            // encryptCheckBox
+            // 
+            this.encryptCheckBox.AutoSize = true;
+            this.encryptCheckBox.Location = new System.Drawing.Point(12, 140);
+            this.encryptCheckBox.Name = "encryptCheckBox";
+            this.encryptCheckBox.Size = new System.Drawing.Size(108, 17);
+            this.encryptCheckBox.TabIndex = 5;
+            this.encryptCheckBox.Text = "Encrypt mesage?";
+            this.encryptCheckBox.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(338, 450);
+            this.Controls.Add(this.encryptCheckBox);
             this.Controls.Add(this.inputTextBox);
             this.Controls.Add(this.outputTextBox);
             this.Controls.Add(this.encrytpButton);
@@ -536,6 +548,7 @@
         private System.Windows.Forms.Button encrytpButton;
         private System.Windows.Forms.RichTextBox outputTextBox;
         private System.Windows.Forms.RichTextBox inputTextBox;
+        private System.Windows.Forms.CheckBox encryptCheckBox;
     }
 }
 
