@@ -1,0 +1,2 @@
+# PolibiusSquare
+Учебный проект.
